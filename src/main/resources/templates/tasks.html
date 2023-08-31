@@ -12,33 +12,62 @@
 
 <body>
 <main role="main" class="container">
-
-    <table border="1">
-        <thead>
-        <tr th:if="${!tasks.empty}">
-            <th> Task Id </th>
-            <th> Task Action Type </th>
-            <th> Task Subject Patient </th>
-            <th> Task Start Time </th>
-            <th> Task Status </th>
-            <th> Plan Id </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:if="${tasks.empty}">
-            <td colspan="2"> No Tasks </td>
-        </tr>
-        <tr th:each="task : ${tasks}">
-            <td><span th:text="${task.id}"> Task Id </span></td>
-            <td><span th:text="${task.actionType}"> Task Action Type </span></td>
-            <td><span th:text="${task.subjectPatient}"> Task Subject Patient </span></td>
-            <td><span th:text="${task.startTime}"> Task Start Time </span></td>
-            <td><span th:text="${task.status}"> Task Status </span></td>
-            <td><span th:text="${task.treatmentPlanEntity.id}"> Plan Id </span></td>
-        </tr>
-        </tbody>
-    </table>
-
+    <div>
+        <div class="title"><u>Plans:</u></div><br>
+        <table border="1">
+            <thead>
+            <tr th:if="${!plans.empty}">
+                <th> Plan Id </th>
+                <th> Plan Action Type </th>
+                <th> Plan Subject Patient </th>
+                <th> Plan Start Time </th>
+                <th> Plan End Time </th>
+                <th> Plan Recurrence Pattern </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${plans.empty}">
+                <td colspan="2"> No Plans </td>
+            </tr>
+            <tr th:each="plan : ${plans}">
+                <td><span th:text="${plan.id}"> Plan Id </span></td>
+                <td><span th:text="${plan.actionType}"> Plan Action Type </span></td>
+                <td><span th:text="${plan.subjectPatient}"> Plan Subject Patient </span></td>
+                <td><span th:text="${plan.startTime}"> Plan Start Time </span></td>
+                <td><span th:text="${plan.endTime}"> Plan End  Time </span></td>
+                <td><span th:text="${plan.recurrencePattern}"> Plan Recurrence Pattern </span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div><br><br>
+    <div>
+        <div class="title"><u>Tasks:</u></div><br>
+        <table border="1">
+            <thead>
+            <tr th:if="${!tasks.empty}">
+                <th> Task Id </th>
+                <th> Task Action Type </th>
+                <th> Task Subject Patient </th>
+                <th> Task Start Time </th>
+                <th> Task Status </th>
+                <th> Plan Id </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${tasks.empty}">
+                <td colspan="2"> No Tasks </td>
+            </tr>
+            <tr th:each="task : ${tasks}">
+                <td><span th:text="${task.id}"> Task Id </span></td>
+                <td><span th:text="${task.actionType}"> Task Action Type </span></td>
+                <td><span th:text="${task.subjectPatient}"> Task Subject Patient </span></td>
+                <td><span th:text="${task.startTime}"> Task Start Time </span></td>
+                <td><span th:text="${task.status}"> Task Status </span></td>
+                <td><span th:text="${task.treatmentPlanEntity.id}"> Plan Id </span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </main>
 </body>
 </html>

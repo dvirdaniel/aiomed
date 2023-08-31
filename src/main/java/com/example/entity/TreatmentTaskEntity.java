@@ -1,6 +1,7 @@
 package com.example.entity;
 
 import com.example.enums.ActionType;
+import com.example.enums.Status;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
@@ -25,7 +26,7 @@ public class TreatmentTaskEntity {
     private Timestamp startTime;
 
     @Column(name = "STATUS", nullable = false)
-    private Integer status;
+    private Status status;
 
     @ManyToOne
     @JoinColumn(name = "TREATMENT_PLAN_ID", referencedColumnName = "ID")
@@ -63,11 +64,11 @@ public class TreatmentTaskEntity {
         this.startTime = startTime;
     }
 
-    public Integer getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

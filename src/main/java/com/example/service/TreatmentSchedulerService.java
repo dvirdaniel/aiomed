@@ -16,9 +16,6 @@ import java.util.List;
 public class TreatmentSchedulerService {
 
     @Autowired
-    private TreatmentPlanService treatmentPlanService;
-
-    @Autowired
     private TreatmentTaskService treatmentTaskService;
 
     private List<Date> calculateTreatmentDates(TreatmentPlanEntity plan) {
@@ -90,12 +87,8 @@ public class TreatmentSchedulerService {
         return dates;
     }
 
-    public List calculateTreatmentTasks() {
-        Date current = new Date();
-        Calendar calendar = Calendar.getInstance();
+    public List calculateTreatmentTasks(List<TreatmentPlanEntity> plans, Date current) {
         List<TreatmentTaskEntity> tasks = new ArrayList<>();
-        List<TreatmentPlanEntity> plans = treatmentPlanService.getAllByDate(current);
-        System.out.println(plans);
         plans.forEach( plan -> {
             List<Date> calculateDates = calculateTreatmentDates(plan);
             if (calculateDates != null) {
@@ -105,7 +98,6 @@ public class TreatmentSchedulerService {
                 );
             }
         });
-        System.out.println(tasks);
 
         return tasks;
     }

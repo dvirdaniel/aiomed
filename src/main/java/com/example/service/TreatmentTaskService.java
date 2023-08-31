@@ -29,7 +29,7 @@ public class TreatmentTaskService {
         TreatmentTaskEntity treatmentTaskEntity = new TreatmentTaskEntity();
         treatmentTaskEntity.setTreatmentPlanEntity(treatmentPlanEntity);
         treatmentTaskEntity.setActionType(treatmentPlanEntity.getActionType());
-        treatmentTaskEntity.setStatus(Status.Active.ordinal());
+        treatmentTaskEntity.setStatus(Status.Active);
         treatmentTaskEntity.setStartTime(new Timestamp(startDate.getTime()));
         treatmentTaskEntity.setSubjectPatient(treatmentPlanEntity.getSubjectPatient());
 
