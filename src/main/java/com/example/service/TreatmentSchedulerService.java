@@ -18,6 +18,9 @@ public class TreatmentSchedulerService {
     @Autowired
     private TreatmentTaskService treatmentTaskService;
 
+    @Autowired
+    private TreatmentPlanService treatmentPlanService;
+
     private List<Date> calculateTreatmentDates(TreatmentPlanEntity plan) {
         List<Date> dates = new ArrayList<>();
         boolean repetition = false;
@@ -87,7 +90,9 @@ public class TreatmentSchedulerService {
         return dates;
     }
 
-    public List calculateTreatmentTasks(List<TreatmentPlanEntity> plans, Date current) {
+    public List calculateTreatmentTasks() {
+        Date current = new Date();
+        List<TreatmentPlanEntity> plans = treatmentPlanService.getAllByDate(current);
         List<TreatmentTaskEntity> tasks = new ArrayList<>();
         plans.forEach( plan -> {
             List<Date> calculateDates = calculateTreatmentDates(plan);

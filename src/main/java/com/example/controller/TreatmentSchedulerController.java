@@ -26,9 +26,8 @@ public class TreatmentSchedulerController {
 
     @GetMapping("/")
     public ModelAndView getTreatmentTasks() {
-        Date current = new Date();
-        List<TreatmentPlanEntity> plans = treatmentPlanService.getAllByDate(current);
-        List tasks = treatmentSchedulerService.calculateTreatmentTasks(plans, current);
+        List<TreatmentPlanEntity> plans = treatmentPlanService.getAll();
+        List tasks = treatmentSchedulerService.calculateTreatmentTasks();
         Map<String, List> model = new HashMap<>();
         model.put("plans", plans);
         model.put("tasks", tasks);
