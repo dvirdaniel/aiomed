@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Display tasks</title>
+
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+</head>
+
+<body>
+<main role="main" class="container">
+
+    <table border="1">
+        <thead>
+        <tr th:if="${!tasks.empty}">
+            <th> Task Id </th>
+            <th> Task Action Type </th>
+            <th> Task Subject Patient </th>
+            <th> Task Start Time </th>
+            <th> Task Status </th>
+            <th> Plan Id </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${tasks.empty}">
+            <td colspan="2"> No Tasks </td>
+        </tr>
+        <tr th:each="task : ${tasks}">
+            <td><span th:text="${task.id}"> Task Id </span></td>
+            <td><span th:text="${task.actionType}"> Task Action Type </span></td>
+            <td><span th:text="${task.subjectPatient}"> Task Subject Patient </span></td>
+            <td><span th:text="${task.startTime}"> Task Start Time </span></td>
+            <td><span th:text="${task.status}"> Task Status </span></td>
+            <td><span th:text="${task.treatmentPlanEntity.id}"> Plan Id </span></td>
+        </tr>
+        </tbody>
+    </table>
+
+</main>
+</body>
+</html>
